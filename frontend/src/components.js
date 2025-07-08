@@ -4,10 +4,24 @@ import { Link, useLocation } from 'react-router-dom';
 // Header Component
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
+  const { state, actions } = useApp();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
+  const getTotalCartItems = () => {
+    return state.cart.reduce((total, item) => total + item.quantity, 0);
+  };
 
   return (
-    <header className="bg-white shadow-lg">
+    <header className="bg-white shadow-lg relative z-50">
       {/* Top Bar */}
       <div className="bg-gray-100 text-sm">
         <div className="container mx-auto px-4 py-2 flex justify-between items-center">
@@ -16,12 +30,12 @@ export const Header = () => {
             <span>📞 +234 812 364 7982</span>
             <span>📧 info@einspot.com.ng</span>
           </div>
-          <div className="flex items-center space-x-4">
-            <span>Warranties</span>
-            <span>Resources</span>
-            <span>Tax Credits</span>
-            <span>Sustainability</span>
-            <span>Careers</span>
+          <div className="hidden md:flex items-center space-x-4">
+            <span className="hover:text-red-600 cursor-pointer transition-colors">Warranties</span>
+            <span className="hover:text-red-600 cursor-pointer transition-colors">Resources</span>
+            <span className="hover:text-red-600 cursor-pointer transition-colors">Tax Credits</span>
+            <span className="hover:text-red-600 cursor-pointer transition-colors">Sustainability</span>
+            <span className="hover:text-red-600 cursor-pointer transition-colors">Careers</span>
           </div>
         </div>
       </div>
@@ -30,51 +44,160 @@ export const Header = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-gray-800">
+            <Link to="/" className="text-2xl font-bold text-gray-800 hover:text-red-600 transition-colors">
               EINSPOT <span className="text-red-600">SOLUTIONS</span>
             </Link>
           </div>
           
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/products" className={`font-medium ${location.pathname === '/products' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>Products</Link>
-            <Link to="/services" className={`font-medium ${location.pathname === '/services' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>Services</Link>
-            <Link to="/projects" className={`font-medium ${location.pathname === '/projects' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>Projects</Link>
-            <Link to="/blog" className={`font-medium ${location.pathname === '/blog' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>Blog</Link>
-            <Link to="/about" className={`font-medium ${location.pathname === '/about' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>About</Link>
-            <Link to="/contact" className={`font-medium ${location.pathname === '/contact' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>Contact</Link>
+          <div className="hidden lg:flex items-center space-x-8">
+            <Link to="/products" className={`font-medium transition-colors ${location.pathname === '/products' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>
+              Products
+            </Link>
+            <Link to="/services" className={`font-medium transition-colors ${location.pathname === '/services' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>
+              Services
+            </Link>
+            <Link to="/projects" className={`font-medium transition-colors ${location.pathname === '/projects' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>
+              Projects
+            </Link>
+            <Link to="/blog" className={`font-medium transition-colors ${location.pathname === '/blog' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>
+              Blog
+            </Link>
+            <Link to="/about" className={`font-medium transition-colors ${location.pathname === '/about' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>
+              About
+            </Link>
+            <Link to="/contact" className={`font-medium transition-colors ${location.pathname === '/contact' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>
+              Contact
+            </Link>
           </div>
 
           <div className="flex items-center space-x-4">
-            <input 
-              type="text" 
-              placeholder="What are you looking for?" 
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-            <button className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition">
+            {/* Search Bar */}
+            <form onSubmit={handleSearch} className="hidden md:flex items-center">
+              <div className="relative">
+                <input 
+                  type="text" 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search products & services..." 
+                  className="w-64 px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition-all"
+                />
+                <svg className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+            </form>
+
+            {/* User Account */}
+            {state.isAuthenticated ? (
+              <div className="relative group">
+                <button className="flex items-center space-x-2 text-gray-700 hover:text-red-600 transition-colors">
+                  <div className="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-semibold">
+                    {state.user?.firstName?.charAt(0) || 'U'}
+                  </div>
+                  <span className="hidden md:block">{state.user?.firstName || 'User'}</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {/* User Dropdown */}
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="py-2">
+                    <Link to="/dashboard" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                      🏠 Dashboard
+                    </Link>
+                    <Link to="/dashboard" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                      📦 My Orders
+                    </Link>
+                    <Link to="/dashboard" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                      ❤️ Wishlist
+                    </Link>
+                    <Link to="/dashboard" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                      ⚙️ Settings
+                    </Link>
+                    <hr className="my-2" />
+                    <button 
+                      onClick={actions.logout}
+                      className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+                    >
+                      🚪 Logout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <Link to="/login" className="text-gray-700 hover:text-red-600 font-medium transition-colors">
+                  Login
+                </Link>
+                <Link to="/register" className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium">
+                  Sign Up
+                </Link>
+              </div>
+            )}
+
+            {/* Shopping Cart */}
+            <Link to="/cart" className="relative text-gray-700 hover:text-red-600 transition-colors">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5h2.5M14 13l2.5 5" />
+              </svg>
+              {getTotalCartItems() > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
+                  {getTotalCartItems()}
+                </span>
+              )}
+            </Link>
+
+            {/* Find a Pro Button */}
+            <button className="hidden md:block bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium">
               Find a Pro
             </button>
-          </div>
 
-          <button 
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+            {/* Mobile Menu Toggle */}
+            <button 
+              className="lg:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
         
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
+          <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
             <div className="flex flex-col space-y-2 pt-4">
-              <Link to="/products" className="text-gray-700 hover:text-red-600 font-medium py-2">Products</Link>
-              <Link to="/services" className="text-gray-700 hover:text-red-600 font-medium py-2">Services</Link>
-              <Link to="/projects" className="text-gray-700 hover:text-red-600 font-medium py-2">Projects</Link>
-              <Link to="/blog" className="text-gray-700 hover:text-red-600 font-medium py-2">Blog</Link>
-              <Link to="/about" className="text-gray-700 hover:text-red-600 font-medium py-2">About</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-red-600 font-medium py-2">Contact</Link>
+              {/* Mobile Search */}
+              <form onSubmit={handleSearch} className="mb-4">
+                <div className="relative">
+                  <input 
+                    type="text" 
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search..." 
+                    className="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  />
+                  <svg className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+              </form>
+              
+              <Link to="/products" className="text-gray-700 hover:text-red-600 font-medium py-2 transition-colors">Products</Link>
+              <Link to="/services" className="text-gray-700 hover:text-red-600 font-medium py-2 transition-colors">Services</Link>
+              <Link to="/projects" className="text-gray-700 hover:text-red-600 font-medium py-2 transition-colors">Projects</Link>
+              <Link to="/blog" className="text-gray-700 hover:text-red-600 font-medium py-2 transition-colors">Blog</Link>
+              <Link to="/about" className="text-gray-700 hover:text-red-600 font-medium py-2 transition-colors">About</Link>
+              <Link to="/contact" className="text-gray-700 hover:text-red-600 font-medium py-2 transition-colors">Contact</Link>
+              
+              {!state.isAuthenticated && (
+                <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200">
+                  <Link to="/login" className="text-gray-700 hover:text-red-600 font-medium py-2 transition-colors">Login</Link>
+                  <Link to="/register" className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium text-center">Sign Up</Link>
+                </div>
+              )}
             </div>
           </div>
         )}
