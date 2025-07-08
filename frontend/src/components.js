@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 // Header Component
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <header className="bg-white shadow-lg">
@@ -28,16 +30,18 @@ export const Header = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-gray-800">
+            <Link to="/" className="text-2xl font-bold text-gray-800">
               EINSPOT <span className="text-red-600">SOLUTIONS</span>
-            </h1>
+            </Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-red-600 font-medium">Homeowners</a>
-            <a href="#" className="text-gray-700 hover:text-red-600 font-medium">Commercial</a>
-            <a href="#" className="text-gray-700 hover:text-red-600 font-medium">Professionals</a>
-            <a href="#" className="text-gray-700 hover:text-red-600 font-medium">About</a>
+            <Link to="/products" className={`font-medium ${location.pathname === '/products' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>Products</Link>
+            <Link to="/services" className={`font-medium ${location.pathname === '/services' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>Services</Link>
+            <Link to="/projects" className={`font-medium ${location.pathname === '/projects' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>Projects</Link>
+            <Link to="/blog" className={`font-medium ${location.pathname === '/blog' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>Blog</Link>
+            <Link to="/about" className={`font-medium ${location.pathname === '/about' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>About</Link>
+            <Link to="/contact" className={`font-medium ${location.pathname === '/contact' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}`}>Contact</Link>
           </div>
 
           <div className="flex items-center space-x-4">
@@ -60,6 +64,20 @@ export const Header = () => {
             </svg>
           </button>
         </div>
+        
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
+            <div className="flex flex-col space-y-2 pt-4">
+              <Link to="/products" className="text-gray-700 hover:text-red-600 font-medium py-2">Products</Link>
+              <Link to="/services" className="text-gray-700 hover:text-red-600 font-medium py-2">Services</Link>
+              <Link to="/projects" className="text-gray-700 hover:text-red-600 font-medium py-2">Projects</Link>
+              <Link to="/blog" className="text-gray-700 hover:text-red-600 font-medium py-2">Blog</Link>
+              <Link to="/about" className="text-gray-700 hover:text-red-600 font-medium py-2">About</Link>
+              <Link to="/contact" className="text-gray-700 hover:text-red-600 font-medium py-2">Contact</Link>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );
