@@ -1436,35 +1436,21 @@ export const BlogPage = () => {
 
 // Contact Page
 export const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    service: '',
-    message: ''
-  });
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
+  useEffect(() => {
+    updateMetaTags({
+      title: 'Contact EINSPOT SOLUTIONS NIG LTD - Engineering Services Nigeria',
+      description: 'Contact EINSPOT SOLUTIONS for professional engineering services. Located in Lagos, Nigeria. Phone: +234 812 364 7982. Email: info@einspot.com.ng',
+      keywords: 'contact EINSPOT Nigeria, engineering services contact, HVAC company Lagos contact, fire safety services Nigeria contact, building automation contact',
+      image: 'https://images.unsplash.com/photo-1566446896748-6075a87760c1',
+      type: 'website'
     });
-  };
+  }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      service: '',
-      message: ''
-    });
+  const handleFormSuccess = () => {
+    setShowSuccessMessage(true);
+    setTimeout(() => setShowSuccessMessage(false), 5000);
   };
 
   return (
@@ -1472,106 +1458,35 @@ export const ContactPage = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-red-600 text-white py-16">
+      <section className="bg-red-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
           <p className="text-xl">Get in touch with our engineering experts</p>
         </div>
       </section>
 
+      {/* Success Message */}
+      {showSuccessMessage && (
+        <div className="container mx-auto px-4 py-4">
+          <div className="bg-green-50 border border-green-200 text-green-800 px-6 py-4 rounded-lg">
+            <div className="flex items-center">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              Thank you for your message! We'll get back to you within 24 hours.
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Contact Form & Info */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Form */}
+            {/* Enhanced Contact Form */}
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">Name *</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">Email *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                    />
-                  </div>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">Phone</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">Company</label>
-                    <input
-                      type="text"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">Service Interest</label>
-                  <select
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="hvac">HVAC Systems</option>
-                    <option value="water-heating">Water Heating</option>
-                    <option value="fire-safety">Fire Safety</option>
-                    <option value="building-automation">Building Automation</option>
-                    <option value="electrical">Electrical Engineering</option>
-                    <option value="plumbing">Plumbing Systems</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">Message *</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="5"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                  ></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition font-semibold"
-                >
-                  Send Message
-                </button>
-              </form>
+              <EnhancedContactForm onSuccess={handleFormSuccess} />
             </div>
 
             {/* Contact Information */}
