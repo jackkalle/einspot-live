@@ -25,10 +25,19 @@ import LoginPage from './components/Auth/LoginPage';
 import RegisterPage from './components/Auth/RegisterPage';
 import UserDashboard from './components/Dashboard/UserDashboard';
 import CartPage from './components/ShoppingCart/CartPage';
+import CheckoutPage from './components/ShoppingCart/CheckoutPage';
 import SearchPage from './components/Search/SearchPage';
 import NotificationSystem from './components/Interactive/NotificationSystem';
 import LiveChat from './components/Interactive/LiveChat';
 import SEOWrapper from './components/SEO/SEOWrapper';
+
+// Admin Components
+import AdminLayout from './components/Admin/AdminLayout';
+import AdminDashboardPage from './components/Admin/AdminDashboardPage';
+import AdminProductsPage from './components/Admin/AdminProductsPage';
+// import AdminOrdersPage from './components/Admin/AdminOrdersPage'; // For future
+// import AdminUsersPage from './components/Admin/AdminUsersPage';   // For future
+
 
 const Home = () => {
   return (
@@ -91,7 +100,17 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/dashboard" element={<UserDashboard />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/search" element={<SearchPage />} />
+
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Navigate to="dashboard" replace />} /> {/* Default to dashboard */}
+              <Route path="dashboard" element={<AdminDashboardPage />} />
+              <Route path="products" element={<AdminProductsPage />} />
+              {/* <Route path="orders" element={<AdminOrdersPage />} /> */}
+              {/* <Route path="users" element={<AdminUsersPage />} /> */}
+            </Route>
           </Routes>
         </BrowserRouter>
       </div>
