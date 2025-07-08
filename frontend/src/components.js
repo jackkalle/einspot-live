@@ -8,7 +8,16 @@ export const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
-  const { state, actions } = useApp();
+  
+  // Mock state for now - will be replaced with actual context
+  const state = {
+    isAuthenticated: false,
+    user: null,
+    cart: []
+  };
+  const actions = {
+    logout: () => console.log('logout'),
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
