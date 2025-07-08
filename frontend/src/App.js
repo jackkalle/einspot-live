@@ -10,7 +10,13 @@ import {
   EnergyStarSection,
   ProductsSection,
   Footer,
-  WhatsAppButton
+  WhatsAppButton,
+  ProductsPage,
+  ServicesPage,
+  AboutPage,
+  ProjectsPage,
+  BlogPage,
+  ContactPage
 } from './components';
 
 const Home = () => {
@@ -35,6 +41,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </BrowserRouter>
     </div>
