@@ -439,3 +439,909 @@ export const WhatsAppButton = () => {
     </div>
   );
 };
+
+// Products Page
+export const ProductsPage = () => {
+  const productCategories = [
+    {
+      name: "Water Heaters",
+      description: "Reliable hot water solutions for every need",
+      image: "https://images.unsplash.com/photo-1581720604719-ee1b1a4e44b1",
+      products: [
+        { name: "Tank Water Heaters", specs: "40-80 gallon capacity", price: "From ₦450,000" },
+        { name: "Tankless Water Heaters", specs: "On-demand heating", price: "From ₦680,000" },
+        { name: "Heat Pump Water Heaters", specs: "Energy efficient", price: "From ₦850,000" },
+        { name: "Solar Water Heaters", specs: "Eco-friendly solution", price: "From ₦920,000" }
+      ]
+    },
+    {
+      name: "HVAC Systems",
+      description: "Complete heating and cooling solutions",
+      image: "https://images.unsplash.com/photo-1601520525418-4d7ff1314879",
+      products: [
+        { name: "Split AC Units", specs: "1-5 HP capacity", price: "From ₦280,000" },
+        { name: "Central Air Systems", specs: "Commercial grade", price: "From ₦1,200,000" },
+        { name: "Heat Pumps", specs: "All-season comfort", price: "From ₦750,000" },
+        { name: "Ductless Mini-Splits", specs: "Zone control", price: "From ₦420,000" }
+      ]
+    },
+    {
+      name: "Fire Safety Systems",
+      description: "Advanced fire protection solutions",
+      image: "https://images.unsplash.com/photo-1606613816974-93057c2ad2b6",
+      products: [
+        { name: "Sprinkler Systems", specs: "Automatic activation", price: "From ₦350,000" },
+        { name: "Fire Alarms", specs: "Smart detection", price: "From ₦150,000" },
+        { name: "Emergency Lighting", specs: "Battery backup", price: "From ₦85,000" },
+        { name: "Fire Extinguishers", specs: "Various types", price: "From ₦25,000" }
+      ]
+    },
+    {
+      name: "Building Automation",
+      description: "Smart building management systems",
+      image: "https://images.pexels.com/photos/7723554/pexels-photo-7723554.jpeg",
+      products: [
+        { name: "BMS Controllers", specs: "Central control", price: "From ₦580,000" },
+        { name: "Smart Sensors", specs: "Environmental monitoring", price: "From ₦45,000" },
+        { name: "Control Panels", specs: "User interface", price: "From ₦320,000" },
+        { name: "Automation Software", specs: "Cloud-based", price: "From ₦180,000" }
+      ]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="bg-red-600 text-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">Our Products</h1>
+          <p className="text-xl">Discover our comprehensive range of engineering solutions</p>
+        </div>
+      </section>
+
+      {/* Product Categories */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          {productCategories.map((category, index) => (
+            <div key={index} className="mb-16">
+              <div className="grid md:grid-cols-2 gap-12 items-center mb-8">
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-800 mb-4">{category.name}</h2>
+                  <p className="text-gray-600 text-lg">{category.description}</p>
+                </div>
+                <div className="relative">
+                  <img 
+                    src={category.image} 
+                    alt={category.name}
+                    className="w-full h-64 object-cover rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {category.products.map((product, idx) => (
+                  <div key={idx} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-800">{product.name}</h3>
+                    <p className="text-gray-600 mb-4">{product.specs}</p>
+                    <p className="text-red-600 font-bold text-lg mb-4">{product.price}</p>
+                    <button className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition">
+                      Request Quote
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  );
+};
+
+// Services Page
+export const ServicesPage = () => {
+  const services = [
+    {
+      title: "HVAC Design & Installation",
+      description: "Complete heating, ventilation, and air conditioning solutions for residential and commercial properties.",
+      image: "https://images.unsplash.com/photo-1601520525418-4d7ff1314879",
+      features: ["System Design", "Installation", "Maintenance", "Repair Services"],
+      process: ["Site Assessment", "System Design", "Professional Installation", "Testing & Commissioning"]
+    },
+    {
+      title: "Water Heating Solutions",
+      description: "Reliable hot water systems including tank, tankless, and solar water heaters.",
+      image: "https://images.unsplash.com/photo-1581720604719-ee1b1a4e44b1",
+      features: ["Tank Water Heaters", "Tankless Systems", "Solar Solutions", "Heat Pump Water Heaters"],
+      process: ["Water Usage Analysis", "System Sizing", "Professional Installation", "Performance Testing"]
+    },
+    {
+      title: "Fire Safety & Protection",
+      description: "Comprehensive fire protection systems including sprinklers, alarms, and emergency lighting.",
+      image: "https://images.unsplash.com/photo-1606613816974-93057c2ad2b6",
+      features: ["Fire Sprinklers", "Alarm Systems", "Emergency Lighting", "Fire Extinguishers"],
+      process: ["Risk Assessment", "System Design", "Installation", "Testing & Certification"]
+    },
+    {
+      title: "Building Automation (BMS)",
+      description: "Smart building management systems for optimal energy efficiency and comfort control.",
+      image: "https://images.pexels.com/photos/7723554/pexels-photo-7723554.jpeg",
+      features: ["Central Control", "Energy Management", "Remote Monitoring", "Automated Controls"],
+      process: ["System Analysis", "Design & Programming", "Installation", "Training & Support"]
+    },
+    {
+      title: "Electrical Engineering",
+      description: "Complete electrical solutions including wiring, panels, and smart home automation.",
+      image: "https://images.pexels.com/photos/7078360/pexels-photo-7078360.jpeg",
+      features: ["Electrical Wiring", "Panel Installation", "Smart Controls", "Power Distribution"],
+      process: ["Electrical Design", "Installation", "Testing", "Maintenance"]
+    },
+    {
+      title: "Plumbing Systems",
+      description: "Professional plumbing installation and maintenance for residential and commercial buildings.",
+      image: "https://images.unsplash.com/photo-1566446896748-6075a87760c1",
+      features: ["Pipe Installation", "Fixture Installation", "Leak Detection", "Maintenance"],
+      process: ["Plumbing Design", "Installation", "Pressure Testing", "Final Inspection"]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="bg-red-600 text-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">Our Services</h1>
+          <p className="text-xl">Professional engineering solutions for all your building needs</p>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          {services.map((service, index) => (
+            <div key={index} className={`mb-20 ${index % 2 === 1 ? 'bg-gray-50' : ''} py-12 rounded-lg`}>
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className={index % 2 === 1 ? 'order-2' : ''}>
+                  <h2 className="text-3xl font-bold text-gray-800 mb-4">{service.title}</h2>
+                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  
+                  <div className="mb-6">
+                    <h3 className="text-xl font-semibold mb-3 text-gray-800">Key Features:</h3>
+                    <ul className="grid grid-cols-2 gap-2">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-gray-600">
+                          <span className="text-red-600 mr-2">✓</span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="mb-6">
+                    <h3 className="text-xl font-semibold mb-3 text-gray-800">Our Process:</h3>
+                    <ol className="space-y-2">
+                      {service.process.map((step, idx) => (
+                        <li key={idx} className="flex items-center text-gray-600">
+                          <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">
+                            {idx + 1}
+                          </span>
+                          {step}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                  
+                  <button className="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition">
+                    Get Quote
+                  </button>
+                </div>
+                
+                <div className={index % 2 === 1 ? 'order-1' : ''}>
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-80 object-cover rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  );
+};
+
+// About Page
+export const AboutPage = () => {
+  const teamMembers = [
+    {
+      name: "Engr. John Adebayo",
+      position: "Managing Director",
+      image: "https://images.unsplash.com/photo-1573166801077-d98391a43199",
+      bio: "20+ years experience in HVAC and building engineering"
+    },
+    {
+      name: "Engr. Sarah Okonkwo",
+      position: "Chief Technical Officer",
+      image: "https://images.unsplash.com/photo-1580943795425-a4d2f4101c76",
+      bio: "Expert in fire safety and building automation systems"
+    },
+    {
+      name: "Engr. Michael Taiwo",
+      position: "Project Manager",
+      image: "https://images.pexels.com/photos/8469943/pexels-photo-8469943.jpeg",
+      bio: "Specialized in large-scale commercial installations"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="bg-red-600 text-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">About EINSPOT SOLUTIONS</h1>
+          <p className="text-xl">Engineering Excellence Since 2015</p>
+        </div>
+      </section>
+
+      {/* Company Story */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
+              <p className="text-gray-600 mb-4">
+                Founded in 2015, EINSPOT SOLUTIONS NIG LTD has been at the forefront of engineering excellence in Nigeria. 
+                We specialize in providing comprehensive HVAC, water heating, fire safety, and building automation solutions.
+              </p>
+              <p className="text-gray-600 mb-4">
+                As authorized distributors of Rheem products, we bring world-class engineering solutions to Nigerian homes and businesses. 
+                Our commitment to quality, reliability, and customer satisfaction has made us a trusted partner in the industry.
+              </p>
+              <p className="text-gray-600">
+                Today, we continue to innovate and expand our services, ensuring that every project meets the highest standards 
+                of engineering excellence and customer satisfaction.
+              </p>
+            </div>
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1657571484151-41be42fa72f5" 
+                alt="Our facility"
+                className="w-full h-96 object-cover rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Mission</h3>
+              <p className="text-gray-600">
+                To provide innovative, reliable, and sustainable engineering solutions that improve the quality of life 
+                for our customers while contributing to Nigeria's infrastructural development.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Vision</h3>
+              <p className="text-gray-600">
+                To be the leading engineering solutions provider in West Africa, known for excellence, innovation, 
+                and unwavering commitment to customer satisfaction.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">Our Core Values</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { title: "Quality", icon: "⭐", description: "We never compromise on the quality of our products and services" },
+              { title: "Reliability", icon: "🔧", description: "Our solutions are built to last and perform consistently" },
+              { title: "Innovation", icon: "💡", description: "We embrace new technologies and continuously improve our offerings" },
+              { title: "Integrity", icon: "🤝", description: "We conduct business with honesty, transparency, and ethical practices" }
+            ].map((value, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl mb-4">{value.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{value.title}</h3>
+                <p className="text-gray-600">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">Our Leadership Team</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div className="h-64 bg-cover bg-center" style={{backgroundImage: `url(${member.image})`}}></div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{member.name}</h3>
+                  <p className="text-red-600 font-medium mb-3">{member.position}</p>
+                  <p className="text-gray-600">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">Certifications & Partnerships</h2>
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="font-semibold text-gray-800 mb-2">ISO 9001:2015</h3>
+              <p className="text-gray-600">Quality Management System</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="font-semibold text-gray-800 mb-2">Rheem Certified</h3>
+              <p className="text-gray-600">Authorized Distributor</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="font-semibold text-gray-800 mb-2">COREN Registered</h3>
+              <p className="text-gray-600">Council for Regulation of Engineering</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="font-semibold text-gray-800 mb-2">NFPA Member</h3>
+              <p className="text-gray-600">National Fire Protection Association</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  );
+};
+
+// Projects Page
+export const ProjectsPage = () => {
+  const projects = [
+    {
+      title: "Lagos State University HVAC Installation",
+      location: "Lagos, Nigeria",
+      date: "2024",
+      status: "Completed",
+      image: "https://images.unsplash.com/photo-1601520525418-4d7ff1314879",
+      description: "Complete HVAC system installation for the new engineering building including central air conditioning, ventilation, and building automation systems.",
+      scope: ["Central HVAC System", "BMS Installation", "Ventilation Design", "Energy Management"]
+    },
+    {
+      title: "Ikoyi Residential Complex Water Heating",
+      location: "Lagos, Nigeria", 
+      date: "2024",
+      status: "Completed",
+      image: "https://images.unsplash.com/photo-1581720604719-ee1b1a4e44b1",
+      description: "Installation of centralized water heating system for 200-unit residential complex with solar backup systems.",
+      scope: ["Central Water Heating", "Solar Integration", "Distribution System", "Maintenance Contract"]
+    },
+    {
+      title: "Abuja Commercial Plaza Fire Safety",
+      location: "Abuja, Nigeria",
+      date: "2024",
+      status: "Ongoing",
+      image: "https://images.unsplash.com/photo-1606613816974-93057c2ad2b6",
+      description: "Comprehensive fire safety system including sprinklers, alarms, emergency lighting, and evacuation systems for 15-story commercial building.",
+      scope: ["Fire Sprinkler System", "Alarm Systems", "Emergency Lighting", "Evacuation Systems"]
+    },
+    {
+      title: "Port Harcourt Hospital BMS",
+      location: "Port Harcourt, Nigeria",
+      date: "2024",
+      status: "Completed",
+      image: "https://images.pexels.com/photos/7723554/pexels-photo-7723554.jpeg",
+      description: "Advanced building management system for climate control, energy management, and equipment monitoring in modern hospital facility.",
+      scope: ["Building Automation", "Climate Control", "Energy Monitoring", "Equipment Management"]
+    },
+    {
+      title: "Kano Industrial Complex",
+      location: "Kano, Nigeria",
+      date: "2023",
+      status: "Completed",
+      image: "https://images.pexels.com/photos/8469943/pexels-photo-8469943.jpeg",
+      description: "Large-scale industrial HVAC and process cooling system for manufacturing facility with specialized environmental controls.",
+      scope: ["Industrial HVAC", "Process Cooling", "Environmental Control", "Maintenance Systems"]
+    },
+    {
+      title: "Enugu Smart Building Project",
+      location: "Enugu, Nigeria",
+      date: "2023",
+      status: "Completed",
+      image: "https://images.unsplash.com/photo-1657571484151-41be42fa72f5",
+      description: "Smart building integration including HVAC, lighting, security, and energy management systems for modern office complex.",
+      scope: ["Smart Integration", "HVAC Systems", "Lighting Control", "Energy Management"]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="bg-red-600 text-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">Our Projects</h1>
+          <p className="text-xl">Showcasing our engineering excellence across Nigeria</p>
+        </div>
+      </section>
+
+      {/* Projects Grid */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
+                <div className="h-48 bg-cover bg-center" style={{backgroundImage: `url(${project.image})`}}>
+                  <div className="h-full bg-black bg-opacity-40 flex items-end">
+                    <div className="p-4">
+                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        project.status === 'Completed' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'
+                      }`}>
+                        {project.status}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{project.title}</h3>
+                  <p className="text-gray-600 mb-3">{project.description}</p>
+                  <div className="flex items-center text-sm text-gray-500 mb-4">
+                    <span>📍 {project.location}</span>
+                    <span className="mx-2">•</span>
+                    <span>📅 {project.date}</span>
+                  </div>
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-gray-800 mb-2">Project Scope:</h4>
+                    <ul className="text-sm text-gray-600">
+                      {project.scope.map((item, idx) => (
+                        <li key={idx} className="flex items-center mb-1">
+                          <span className="text-red-600 mr-2">•</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <button className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 bg-red-600 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
+          <p className="text-xl mb-8">Let's discuss how we can bring your engineering vision to life</p>
+          <button className="bg-white text-red-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition font-semibold">
+            Get Started Today
+          </button>
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  );
+};
+
+// Blog Page
+export const BlogPage = () => {
+  const blogPosts = [
+    {
+      title: "The Future of Smart Building Automation in Nigeria",
+      excerpt: "Exploring how building automation systems are revolutionizing energy efficiency and comfort in Nigerian commercial and residential buildings.",
+      date: "June 15, 2025",
+      author: "Engr. Sarah Okonkwo",
+      image: "https://images.pexels.com/photos/7723554/pexels-photo-7723554.jpeg",
+      category: "Technology",
+      readTime: "5 min read"
+    },
+    {
+      title: "Choosing the Right Water Heater for Your Home",
+      excerpt: "A comprehensive guide to selecting between tank, tankless, and heat pump water heaters based on your family's needs and budget.",
+      date: "June 10, 2025",
+      author: "Engr. Michael Taiwo",
+      image: "https://images.unsplash.com/photo-1581720604719-ee1b1a4e44b1",
+      category: "Home Solutions",
+      readTime: "7 min read"
+    },
+    {
+      title: "Fire Safety Regulations in Nigerian Buildings",
+      excerpt: "Understanding the latest fire safety requirements and how to ensure your building meets all necessary compliance standards.",
+      date: "June 5, 2025",
+      author: "Engr. John Adebayo",
+      image: "https://images.unsplash.com/photo-1606613816974-93057c2ad2b6",
+      category: "Safety",
+      readTime: "8 min read"
+    },
+    {
+      title: "Energy Efficiency: HVAC Systems That Save Money",
+      excerpt: "Discover how modern HVAC systems can significantly reduce your energy bills while maintaining optimal comfort levels.",
+      date: "May 28, 2025",
+      author: "Engr. Sarah Okonkwo",
+      image: "https://images.unsplash.com/photo-1601520525418-4d7ff1314879",
+      category: "Energy",
+      readTime: "6 min read"
+    },
+    {
+      title: "Maintenance Tips for Long-lasting Equipment",
+      excerpt: "Essential maintenance practices that extend the life of your HVAC and water heating systems while ensuring optimal performance.",
+      date: "May 22, 2025",
+      author: "Engr. Michael Taiwo",
+      image: "https://images.pexels.com/photos/7078360/pexels-photo-7078360.jpeg",
+      category: "Maintenance",
+      readTime: "4 min read"
+    },
+    {
+      title: "Sustainable Engineering Solutions for Modern Nigeria",
+      excerpt: "How sustainable engineering practices are shaping the future of construction and infrastructure development in Nigeria.",
+      date: "May 15, 2025",
+      author: "Engr. John Adebayo",
+      image: "https://images.unsplash.com/photo-1580943795425-a4d2f4101c76",
+      category: "Sustainability",
+      readTime: "9 min read"
+    }
+  ];
+
+  const categories = ["All", "Technology", "Home Solutions", "Safety", "Energy", "Maintenance", "Sustainability"];
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const filteredPosts = selectedCategory === "All" 
+    ? blogPosts 
+    : blogPosts.filter(post => post.category === selectedCategory);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="bg-red-600 text-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">Engineering Insights</h1>
+          <p className="text-xl">Stay updated with the latest trends and tips in engineering solutions</p>
+        </div>
+      </section>
+
+      {/* Category Filter */}
+      <section className="py-8 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-4">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-2 rounded-full font-medium transition ${
+                  selectedCategory === category
+                    ? 'bg-red-600 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Posts */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPosts.map((post, index) => (
+              <article key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
+                <div className="h-48 bg-cover bg-center" style={{backgroundImage: `url(${post.image})`}}>
+                  <div className="h-full bg-black bg-opacity-40 flex items-start justify-end p-4">
+                    <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h2 className="text-xl font-semibold text-gray-800 mb-3 line-clamp-2">{post.title}</h2>
+                  <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+                  <div className="flex items-center text-sm text-gray-500 mb-4">
+                    <span>{post.author}</span>
+                    <span className="mx-2">•</span>
+                    <span>{post.date}</span>
+                    <span className="mx-2">•</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  <button className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
+                    Read More
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Signup */}
+      <section className="py-16 bg-red-600 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
+          <p className="text-xl mb-8">Subscribe to our newsletter for the latest engineering insights and industry updates</p>
+          <div className="max-w-md mx-auto flex">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 px-4 py-3 rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
+            />
+            <button className="bg-white text-red-600 px-6 py-3 rounded-r-lg hover:bg-gray-100 transition font-semibold">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  );
+};
+
+// Contact Page
+export const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    service: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    alert('Thank you for your message! We will get back to you soon.');
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      service: '',
+      message: ''
+    });
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="bg-red-600 text-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+          <p className="text-xl">Get in touch with our engineering experts</p>
+        </div>
+      </section>
+
+      {/* Contact Form & Info */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-gray-700 font-medium mb-2">Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-700 font-medium mb-2">Email *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                    />
+                  </div>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-gray-700 font-medium mb-2">Phone</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-700 font-medium mb-2">Company</label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-gray-700 font-medium mb-2">Service Interest</label>
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="hvac">HVAC Systems</option>
+                    <option value="water-heating">Water Heating</option>
+                    <option value="fire-safety">Fire Safety</option>
+                    <option value="building-automation">Building Automation</option>
+                    <option value="electrical">Electrical Engineering</option>
+                    <option value="plumbing">Plumbing Systems</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-gray-700 font-medium mb-2">Message *</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows="5"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  ></textarea>
+                </div>
+                
+                <button
+                  type="submit"
+                  className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition font-semibold"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-8">
+              <div className="bg-white rounded-lg shadow-lg p-8">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">Contact Information</h2>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <div className="bg-red-600 text-white p-3 rounded-full mr-4">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-800">Address</p>
+                      <p className="text-gray-600">Lagos, Nigeria</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <div className="bg-red-600 text-white p-3 rounded-full mr-4">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-800">Phone</p>
+                      <p className="text-gray-600">+234 812 364 7982</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <div className="bg-red-600 text-white p-3 rounded-full mr-4">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-800">Email</p>
+                      <p className="text-gray-600">info@einspot.com.ng</p>
+                      <p className="text-gray-600">info@einspot.com</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-lg p-8">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">Business Hours</h3>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Monday - Friday:</span>
+                    <span className="text-gray-800">8:00 AM - 6:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Saturday:</span>
+                    <span className="text-gray-800">9:00 AM - 4:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Sunday:</span>
+                    <span className="text-gray-800">Closed</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-lg p-8">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">Emergency Services</h3>
+                <p className="text-gray-600 mb-4">
+                  We offer 24/7 emergency support for critical systems. 
+                  Call us anytime for urgent repairs and maintenance.
+                </p>
+                <button className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition font-semibold">
+                  Emergency Contact
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section className="py-16 bg-gray-200">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">Our Location</h2>
+          <div className="bg-white rounded-lg shadow-lg p-4">
+            <div className="h-96 bg-gray-300 rounded-lg flex items-center justify-center">
+              <p className="text-gray-600">Interactive Map - Lagos, Nigeria</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  );
+};
