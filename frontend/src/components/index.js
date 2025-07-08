@@ -15,7 +15,7 @@ export {
   ProjectsPage,
   BlogPage,
   ContactPage
-} from './components';
+} from '../components.js';
 
 // Enhanced Components
 export { default as LoginPage } from './Auth/LoginPage';

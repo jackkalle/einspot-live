@@ -77,6 +77,27 @@ export const authAPI = {
   }
 };
 
+// Payments API
+export const paymentsAPI = {
+  verifyFlutterwave: async (verificationData) => {
+    try {
+      const response = await api.post('/payments/verify/flutterwave', verificationData);
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || { success: false, message: 'Flutterwave verification request failed' };
+    }
+  },
+
+  verifyPaystack: async (verificationData) => {
+    try {
+      const response = await api.post('/payments/verify/paystack', verificationData);
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || { success: false, message: 'Paystack verification request failed' };
+    }
+  }
+};
+
 // Products API
 export const productsAPI = {
   getAll: async (params = {}) => {
@@ -228,5 +249,35 @@ export const projectsAPI = {
     }
   }
 };
+
+// Admin API (could be a separate file or part of this)
+export const adminAPI = {
+  // Product Admin
+  updateProduct: async (productId, productData) => {
+    try {
+      const response = await api.put(`/admin/products/${productId}`, productData);
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || { message: 'Failed to update product' };
+    }
+  },
+
+  deleteProduct: async (productId) => {
+    try {
+      const response = await api.delete(`/admin/products/${productId}`);
+      return response.data; // Or handle 204 No Content status
+    } catch (error) {
+      throw error.response?.data || { message: 'Failed to delete product' };
+    }
+  },
+
+  // TODO: Add other admin API calls here (e.g., for orders, users, etc.)
+  // Example:
+  // getAllUsers: async () => { ... api.get('/admin/users') ... }
+  // updateUserRole: async (userId, role) => { ... api.put(`/admin/users/${userId}/role`, { role }) ... }
+  // getAdminOrders: async () => { ... api.get('/admin/orders') ... }
+  // updateOrderStatus: async (orderId, status) => { ... api.put(`/admin/orders/${orderId}/status`, { status }) ... }
+};
+
 
 export default api;
