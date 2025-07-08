@@ -1,6 +1,132 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useApp } from '../context/AppContext';
+
+// Mock EnhancedContactForm component since it's in a separate file
+const EnhancedContactForm = ({ onSuccess }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    service: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    onSuccess();
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      service: '',
+      message: ''
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-gray-700 font-medium mb-2">Name *</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700 font-medium mb-2">Email *</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-gray-700 font-medium mb-2">Phone</label>
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-700 font-medium mb-2">Company</label>
+          <input
+            type="text"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
+        </div>
+      </div>
+      
+      <div>
+        <label className="block text-gray-700 font-medium mb-2">Service Interest</label>
+        <select
+          name="service"
+          value={formData.service}
+          onChange={handleChange}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+        >
+          <option value="">Select a service</option>
+          <option value="hvac">HVAC Systems</option>
+          <option value="water-heating">Water Heating</option>
+          <option value="fire-safety">Fire Safety</option>
+          <option value="building-automation">Building Automation</option>
+          <option value="electrical">Electrical Engineering</option>
+          <option value="plumbing">Plumbing Systems</option>
+        </select>
+      </div>
+      
+      <div>
+        <label className="block text-gray-700 font-medium mb-2">Message *</label>
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          required
+          rows="5"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+        ></textarea>
+      </div>
+      
+      <button
+        type="submit"
+        className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition font-semibold"
+      >
+        Send Message
+      </button>
+    </form>
+  );
+};
+
+// Mock updateMetaTags function
+const updateMetaTags = (data) => {
+  document.title = data.title;
+};
 
 // Header Component
 export const Header = () => {
