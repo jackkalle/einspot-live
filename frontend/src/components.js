@@ -547,112 +547,171 @@ export const ProductsPage = () => {
 export const ServicesPage = () => {
   const services = [
     {
-      title: "HVAC Design & Installation",
-      description: "Complete heating, ventilation, and air conditioning solutions for residential and commercial properties.",
+      title: "HVAC System Design & Installation",
+      description: "We specialize in the design and professional installation of energy-efficient Heating, Ventilation, and Air Conditioning systems for homes, hotels, commercial buildings, and industries across Nigeria.",
       image: "https://images.unsplash.com/photo-1601520525418-4d7ff1314879",
-      features: ["System Design", "Installation", "Maintenance", "Repair Services"],
-      process: ["Site Assessment", "System Design", "Professional Installation", "Testing & Commissioning"]
+      icon: "🏠",
+      features: ["Energy-efficient systems", "Commercial & residential", "Professional installation", "Maintenance included"],
+      whatsappText: "HVAC System Design & Installation"
     },
     {
-      title: "Water Heating Solutions",
-      description: "Reliable hot water systems including tank, tankless, and solar water heaters.",
+      title: "Water Heater Supply & Installation (Rheem Certified)",
+      description: "As official partners and distributors of Rheem water heating systems, we provide fast delivery, expert installation, and maintenance of electric, gas, and solar water heaters tailored for Nigerian conditions.",
       image: "https://images.unsplash.com/photo-1581720604719-ee1b1a4e44b1",
-      features: ["Tank Water Heaters", "Tankless Systems", "Solar Solutions", "Heat Pump Water Heaters"],
-      process: ["Water Usage Analysis", "System Sizing", "Professional Installation", "Performance Testing"]
+      icon: "💧",
+      features: ["Rheem certified distributor", "Electric, gas & solar options", "Fast delivery", "Expert installation"],
+      whatsappText: "Water Heater Supply & Installation (Rheem Certified)"
     },
     {
-      title: "Fire Safety & Protection",
-      description: "Comprehensive fire protection systems including sprinklers, alarms, and emergency lighting.",
+      title: "Fire Safety & Protection Systems",
+      description: "Design, supply, and installation of certified fire detection and suppression systems including sprinklers, fire alarms, extinguishers, and hose reels compliant with global safety standards.",
       image: "https://images.unsplash.com/photo-1606613816974-93057c2ad2b6",
-      features: ["Fire Sprinklers", "Alarm Systems", "Emergency Lighting", "Fire Extinguishers"],
-      process: ["Risk Assessment", "System Design", "Installation", "Testing & Certification"]
+      icon: "🚨",
+      features: ["Fire detection systems", "Sprinkler installation", "Safety compliance", "Emergency equipment"],
+      whatsappText: "Fire Safety & Protection Systems"
     },
     {
-      title: "Building Automation (BMS)",
-      description: "Smart building management systems for optimal energy efficiency and comfort control.",
-      image: "https://images.pexels.com/photos/7723554/pexels-photo-7723554.jpeg",
-      features: ["Central Control", "Energy Management", "Remote Monitoring", "Automated Controls"],
-      process: ["System Analysis", "Design & Programming", "Installation", "Training & Support"]
-    },
-    {
-      title: "Electrical Engineering",
-      description: "Complete electrical solutions including wiring, panels, and smart home automation.",
+      title: "Electrical Wiring & Smart Lighting",
+      description: "Professional electrical wiring for buildings using fire-rated materials, circuit protection systems, and modern smart lighting automation setups.",
       image: "https://images.pexels.com/photos/7078360/pexels-photo-7078360.jpeg",
-      features: ["Electrical Wiring", "Panel Installation", "Smart Controls", "Power Distribution"],
-      process: ["Electrical Design", "Installation", "Testing", "Maintenance"]
+      icon: "💡",
+      features: ["Fire-rated materials", "Smart automation", "Circuit protection", "Modern lighting"],
+      whatsappText: "Electrical Wiring & Smart Lighting"
     },
     {
-      title: "Plumbing Systems",
-      description: "Professional plumbing installation and maintenance for residential and commercial buildings.",
+      title: "Plumbing & Drainage Systems",
+      description: "Complete plumbing design and installation for residential and commercial structures, including piping, fittings, pressure systems, and water treatment units.",
       image: "https://images.unsplash.com/photo-1566446896748-6075a87760c1",
-      features: ["Pipe Installation", "Fixture Installation", "Leak Detection", "Maintenance"],
-      process: ["Plumbing Design", "Installation", "Pressure Testing", "Final Inspection"]
+      icon: "🔧",
+      features: ["Complete plumbing design", "Pressure systems", "Water treatment", "Quality fittings"],
+      whatsappText: "Plumbing & Drainage Systems"
+    },
+    {
+      title: "Building Automation & Smart Controls (BMS)",
+      description: "We deploy advanced Building Management Systems (BMS) for automating HVAC, lighting, security, and access control using IoT-enabled systems for energy efficiency and monitoring.",
+      image: "https://images.pexels.com/photos/7723554/pexels-photo-7723554.jpeg",
+      icon: "🏢",
+      features: ["IoT-enabled systems", "Energy efficiency", "Remote monitoring", "Smart automation"],
+      whatsappText: "Building Automation & Smart Controls (BMS)"
+    },
+    {
+      title: "Pipes, Valves & Fittings (Industrial & Domestic)",
+      description: "Supply and distribution of high-quality industrial and residential pipework systems, valves, connectors, and fittings with corrosion resistance.",
+      image: "https://images.pexels.com/photos/8469943/pexels-photo-8469943.jpeg",
+      icon: "⚙️",
+      features: ["High-quality materials", "Corrosion resistance", "Industrial grade", "Domestic solutions"],
+      whatsappText: "Pipes, Valves & Fittings"
+    },
+    {
+      title: "Consultation & Project Supervision",
+      description: "Technical consultation and supervisory services for engineering installations, procurement, and quality control. From design review to contractor evaluation and installation supervision.",
+      image: "https://images.unsplash.com/photo-1573166801077-d98391a43199",
+      icon: "📋",
+      features: ["Technical consultation", "Quality control", "Design review", "Installation supervision"],
+      whatsappText: "Consultation & Project Supervision"
     }
   ];
+
+  const handleWhatsAppClick = (serviceName) => {
+    const message = encodeURIComponent(`Hello EINSPOT, I'd like a quote for ${serviceName}.
+Name: [ ]
+Company: [ ]
+Location: [ ]
+Details: [ ]`);
+    window.open(`https://wa.me/2348123647982?text=${message}`, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-red-600 text-white py-16">
+      <section className="bg-red-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Our Services</h1>
-          <p className="text-xl">Professional engineering solutions for all your building needs</p>
+          <h1 className="text-5xl font-bold mb-6">Our Services</h1>
+          <p className="text-xl max-w-3xl mx-auto">Professional engineering solutions for all your building needs across Nigeria</p>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          {services.map((service, index) => (
-            <div key={index} className={`mb-20 ${index % 2 === 1 ? 'bg-gray-50' : ''} py-12 rounded-lg`}>
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className={index % 2 === 1 ? 'order-2' : ''}>
-                  <h2 className="text-3xl font-bold text-gray-800 mb-4">{service.title}</h2>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
-                  
-                  <div className="mb-6">
-                    <h3 className="text-xl font-semibold mb-3 text-gray-800">Key Features:</h3>
-                    <ul className="grid grid-cols-2 gap-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-gray-600">
-                          <span className="text-red-600 mr-2">✓</span>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+          <div className="grid md:grid-cols-2 gap-12">
+            {services.map((service, index) => (
+              <div key={index} className={`group hover:shadow-2xl transition-all duration-500 ${index % 2 === 0 ? 'md:translate-y-8' : ''}`}>
+                <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                    <div className="absolute top-4 left-4 bg-red-600 text-white p-3 rounded-full">
+                      <span className="text-2xl">{service.icon}</span>
+                    </div>
                   </div>
                   
-                  <div className="mb-6">
-                    <h3 className="text-xl font-semibold mb-3 text-gray-800">Our Process:</h3>
-                    <ol className="space-y-2">
-                      {service.process.map((step, idx) => (
-                        <li key={idx} className="flex items-center text-gray-600">
-                          <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">
-                            {idx + 1}
-                          </span>
-                          {step}
-                        </li>
-                      ))}
-                    </ol>
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-red-600 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
+                    
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold mb-3 text-gray-800">Key Features:</h4>
+                      <div className="grid grid-cols-2 gap-2">
+                        {service.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-center text-gray-600">
+                            <span className="text-red-600 mr-2 font-bold">✓</span>
+                            <span className="text-sm">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <button 
+                      onClick={() => handleWhatsAppClick(service.whatsappText)}
+                      className="w-full bg-red-600 text-white py-4 rounded-lg hover:bg-red-700 transition-all duration-300 hover:shadow-lg hover:scale-105 font-semibold text-lg"
+                    >
+                      Request a Quote
+                    </button>
                   </div>
-                  
-                  <button className="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition">
-                    Get Quote
-                  </button>
-                </div>
-                
-                <div className={index % 2 === 1 ? 'order-1' : ''}>
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-80 object-cover rounded-lg shadow-lg"
-                  />
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Why Choose EINSPOT?</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We combine technical expertise with reliable service delivery to ensure your projects succeed
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { icon: "🏆", title: "10+ Years Experience", desc: "Proven track record in Nigerian market" },
+              { icon: "🔧", title: "Expert Team", desc: "Certified engineers and technicians" },
+              { icon: "⚡", title: "Fast Delivery", desc: "Quick turnaround on all projects" },
+              { icon: "🛡️", title: "Quality Guarantee", desc: "100% satisfaction guaranteed" }
+            ].map((item, index) => (
+              <div key={index} className="text-center group hover:scale-105 transition-transform duration-300">
+                <div className="bg-white rounded-2xl p-8 shadow-lg group-hover:shadow-xl">
+                  <div className="text-4xl mb-4">{item.icon}</div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{item.title}</h3>
+                  <p className="text-gray-600">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
