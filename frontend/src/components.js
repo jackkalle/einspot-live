@@ -883,112 +883,212 @@ export const AboutPage = () => {
 export const ProjectsPage = () => {
   const projects = [
     {
-      title: "Lagos State University HVAC Installation",
-      location: "Lagos, Nigeria",
-      date: "2024",
-      status: "Completed",
-      image: "https://images.unsplash.com/photo-1601520525418-4d7ff1314879",
-      description: "Complete HVAC system installation for the new engineering building including central air conditioning, ventilation, and building automation systems.",
-      scope: ["Central HVAC System", "BMS Installation", "Ventilation Design", "Energy Management"]
-    },
-    {
-      title: "Ikoyi Residential Complex Water Heating",
-      location: "Lagos, Nigeria", 
-      date: "2024",
-      status: "Completed",
-      image: "https://images.unsplash.com/photo-1581720604719-ee1b1a4e44b1",
-      description: "Installation of centralized water heating system for 200-unit residential complex with solar backup systems.",
-      scope: ["Central Water Heating", "Solar Integration", "Distribution System", "Maintenance Contract"]
-    },
-    {
-      title: "Abuja Commercial Plaza Fire Safety",
+      title: "HVAC System – Almat Farms Hotel",
+      client: "Almat Farms & Resort",
       location: "Abuja, Nigeria",
-      date: "2024",
+      duration: "3 Months",
+      status: "Completed",
+      type: "HVAC System (Design & Installation)",
+      image: "https://images.unsplash.com/photo-1601520525418-4d7ff1314879",
+      description: "Installed a complete HVAC system for 5-star guest comfort at Almat Farms Hotel. Used energy-efficient ducted split units, zoning controls, and ceiling diffuser outlets.",
+      brandsUsed: ["Rheem", "LG VRF"],
+      technologies: ["Ducted Split Units", "Zoning Controls", "Ceiling Diffusers", "Energy Management"],
+      size: "large",
+      whatsappText: "HVAC System similar to Almat Farms Hotel project"
+    },
+    {
+      title: "Rheem Water Heater Setup – Private Residence",
+      client: "Mr. Emeka Okafor",
+      location: "Lekki, Lagos",
+      duration: "2 Weeks",
+      status: "Completed",
+      type: "Water Heater Installation",
+      image: "https://images.unsplash.com/photo-1581720604719-ee1b1a4e44b1",
+      description: "Installed 3 Rheem Electric Tankless Water Heaters in a duplex. Delivered within 48 hours, full electrical compatibility check, and post-installation testing.",
+      brandsUsed: ["Rheem"],
+      technologies: ["Tankless Water Heaters", "Electrical Integration", "Performance Testing"],
+      size: "small",
+      whatsappText: "Rheem Water Heater Installation similar to Lekki project"
+    },
+    {
+      title: "Fire Suppression System – Microfinance HQ",
+      client: "RoyalMicro Bank HQ",
+      location: "Port Harcourt",
+      duration: "1 Month",
       status: "Ongoing",
+      type: "Fire Safety System",
       image: "https://images.unsplash.com/photo-1606613816974-93057c2ad2b6",
-      description: "Comprehensive fire safety system including sprinklers, alarms, emergency lighting, and evacuation systems for 15-story commercial building.",
-      scope: ["Fire Sprinkler System", "Alarm Systems", "Emergency Lighting", "Evacuation Systems"]
+      description: "Deploying a full fire suppression system including smoke detectors, fire alarm panel, pressurized hydrants, and sprinkler network for HQ building safety compliance.",
+      brandsUsed: ["Honeywell", "Tyco"],
+      technologies: ["Smoke Detectors", "Fire Alarm Panel", "Sprinkler Network", "Pressurized Hydrants"],
+      size: "small",
+      whatsappText: "Fire Safety System similar to RoyalMicro Bank project"
     },
     {
-      title: "Port Harcourt Hospital BMS",
-      location: "Port Harcourt, Nigeria",
-      date: "2024",
+      title: "Smart Lighting & BMS – Prime Apartments",
+      client: "Prime Apartments Ltd",
+      location: "Gwarinpa, Abuja",
+      duration: "5 Weeks",
       status: "Completed",
+      type: "Smart Lighting / BMS",
       image: "https://images.pexels.com/photos/7723554/pexels-photo-7723554.jpeg",
-      description: "Advanced building management system for climate control, energy management, and equipment monitoring in modern hospital facility.",
-      scope: ["Building Automation", "Climate Control", "Energy Monitoring", "Equipment Management"]
+      description: "Installed motion-triggered lights, smart switches, mobile app controls, and IoT building monitoring dashboard. Reduced energy waste by 35%.",
+      brandsUsed: ["Schneider Electric", "Zigbee"],
+      technologies: ["Motion Sensors", "Smart Switches", "IoT Dashboard", "Mobile App Control"],
+      size: "large",
+      whatsappText: "Smart Lighting & BMS similar to Prime Apartments project"
     },
     {
-      title: "Kano Industrial Complex",
+      title: "Industrial Plumbing – Manufacturing Complex",
+      client: "Delta Manufacturing Ltd",
       location: "Kano, Nigeria",
-      date: "2023",
+      duration: "4 Weeks",
       status: "Completed",
+      type: "Industrial Plumbing",
       image: "https://images.pexels.com/photos/8469943/pexels-photo-8469943.jpeg",
-      description: "Large-scale industrial HVAC and process cooling system for manufacturing facility with specialized environmental controls.",
-      scope: ["Industrial HVAC", "Process Cooling", "Environmental Control", "Maintenance Systems"]
+      description: "Large-scale industrial plumbing system for manufacturing facility with specialized pipe networks, pressure systems, and water treatment integration.",
+      brandsUsed: ["Grundfos", "Pentair"],
+      technologies: ["Industrial Piping", "Pressure Systems", "Water Treatment", "Quality Control"],
+      size: "small",
+      whatsappText: "Industrial Plumbing similar to Delta Manufacturing project"
     },
     {
-      title: "Enugu Smart Building Project",
-      location: "Enugu, Nigeria",
-      date: "2023",
+      title: "Comprehensive Building Services – Tech Hub",
+      client: "Innovation Hub Lagos",
+      location: "Victoria Island, Lagos",
+      duration: "6 Months",
       status: "Completed",
+      type: "Multi-System Integration",
       image: "https://images.unsplash.com/photo-1657571484151-41be42fa72f5",
-      description: "Smart building integration including HVAC, lighting, security, and energy management systems for modern office complex.",
-      scope: ["Smart Integration", "HVAC Systems", "Lighting Control", "Energy Management"]
+      description: "Complete building services including HVAC, electrical, plumbing, fire safety, and smart building automation for modern tech hub facility.",
+      brandsUsed: ["Rheem", "Schneider", "Johnson Controls"],
+      technologies: ["HVAC Integration", "Smart Controls", "Fire Safety", "Building Automation"],
+      size: "small",
+      whatsappText: "Multi-System Integration similar to Innovation Hub project"
     }
   ];
+
+  const handleWhatsAppClick = (projectText) => {
+    const message = encodeURIComponent(`Hello EINSPOT, I'd like a quote for ${projectText}.
+Name: [ ]
+Company: [ ]
+Location: [ ]
+Details: [ ]`);
+    window.open(`https://wa.me/2348123647982?text=${message}`, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-red-600 text-white py-16">
+      <section className="bg-red-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Our Projects</h1>
-          <p className="text-xl">Showcasing our engineering excellence across Nigeria</p>
+          <h1 className="text-5xl font-bold mb-6">Our Projects</h1>
+          <p className="text-xl max-w-3xl mx-auto">Showcasing our engineering excellence across Nigeria with real projects and satisfied clients</p>
         </div>
       </section>
 
-      {/* Projects Grid */}
-      <section className="py-16">
+      {/* Projects Statistics */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            {[
+              { number: "150+", label: "Projects Completed", icon: "🏆" },
+              { number: "50+", label: "Happy Clients", icon: "😊" },
+              { number: "10+", label: "Years Experience", icon: "📅" },
+              { number: "24/7", label: "Support Available", icon: "🚀" }
+            ].map((stat, index) => (
+              <div key={index} className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+                <div className="text-4xl mb-4">{stat.icon}</div>
+                <div className="text-3xl font-bold text-red-600 mb-2">{stat.number}</div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bento Grid Projects */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Featured Projects</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Real projects, real results. See how we've helped businesses across Nigeria achieve their engineering goals.
+            </p>
+          </div>
+          
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
             {projects.map((project, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
-                <div className="h-48 bg-cover bg-center" style={{backgroundImage: `url(${project.image})`}}>
-                  <div className="h-full bg-black bg-opacity-40 flex items-end">
-                    <div className="p-4">
-                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        project.status === 'Completed' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'
-                      }`}>
-                        {project.status}
+              <div 
+                key={index} 
+                className={`group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 ${
+                  project.size === 'large' ? 'lg:col-span-2 lg:row-span-2' : ''
+                }`}
+              >
+                <div className="relative h-full min-h-[400px]">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80"></div>
+                  
+                  {/* Status Badge */}
+                  <div className="absolute top-4 right-4">
+                    <span className={`px-4 py-2 rounded-full text-sm font-bold ${
+                      project.status === 'Completed' 
+                        ? 'bg-green-500 text-white' 
+                        : 'bg-yellow-500 text-black'
+                    }`}>
+                      {project.status}
+                    </span>
+                  </div>
+                  
+                  {/* Project Info */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <div className="mb-2">
+                      <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        {project.type}
                       </span>
                     </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{project.title}</h3>
-                  <p className="text-gray-600 mb-3">{project.description}</p>
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <span>📍 {project.location}</span>
-                    <span className="mx-2">•</span>
-                    <span>📅 {project.date}</span>
-                  </div>
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-gray-800 mb-2">Project Scope:</h4>
-                    <ul className="text-sm text-gray-600">
-                      {project.scope.map((item, idx) => (
-                        <li key={idx} className="flex items-center mb-1">
-                          <span className="text-red-600 mr-2">•</span>
-                          {item}
-                        </li>
+                    
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-red-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    
+                    <div className="flex items-center text-sm text-gray-300 mb-3">
+                      <span>📍 {project.location}</span>
+                      <span className="mx-2">•</span>
+                      <span>🏢 {project.client}</span>
+                    </div>
+                    
+                    <p className="text-gray-200 mb-4 leading-relaxed line-clamp-3">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.brandsUsed.map((brand, idx) => (
+                        <span key={idx} className="bg-white/20 text-white px-3 py-1 rounded-full text-xs">
+                          {brand}
+                        </span>
                       ))}
-                    </ul>
+                    </div>
+                    
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={() => handleWhatsAppClick(project.whatsappText)}
+                        className="flex-1 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors font-medium"
+                      >
+                        Request Similar Service
+                      </button>
+                      <button className="bg-white/20 text-white py-2 px-4 rounded-lg hover:bg-white/30 transition-colors">
+                        View Details
+                      </button>
+                    </div>
                   </div>
-                  <button className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition">
-                    View Details
-                  </button>
                 </div>
               </div>
             ))}
@@ -996,14 +1096,46 @@ export const ProjectsPage = () => {
         </div>
       </section>
 
+      {/* Technologies & Brands */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Technologies & Brands We Work With</h2>
+            <p className="text-xl text-gray-600">We partner with leading global brands to deliver excellence</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            {[
+              "Rheem", "Schneider Electric", "LG VRF", "Honeywell", 
+              "Johnson Controls", "Grundfos", "Pentair", "Tyco", 
+              "Zigbee", "Siemens", "ABB", "Mitsubishi"
+            ].map((brand, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+                <div className="text-red-600 font-bold text-lg">{brand}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action */}
-      <section className="py-16 bg-red-600 text-white">
+      <section className="py-20 bg-red-600 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
-          <p className="text-xl mb-8">Let's discuss how we can bring your engineering vision to life</p>
-          <button className="bg-white text-red-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition font-semibold">
-            Get Started Today
-          </button>
+          <h2 className="text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
+          <p className="text-xl mb-8 max-w-3xl mx-auto">
+            Join our growing list of satisfied clients. Let's discuss how we can bring your engineering vision to life with the same excellence shown in our featured projects.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => handleWhatsAppClick("a new project consultation")}
+              className="bg-white text-red-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-bold text-lg"
+            >
+              Get Project Quote
+            </button>
+            <Link to="/contact" className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-red-600 transition-colors font-bold text-lg">
+              Contact Our Team
+            </Link>
+          </div>
         </div>
       </section>
 
