@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles or component overrides can go here if needed */
+body {
+    font-family: 'Poppins', sans-serif; /* Ensure Poppins is default, Inter can be a fallback in tailwind.config.js */
+    @apply text-gray-800 bg-gray-50; /* Default text and background colors */
+}
+
+/* Example of applying guideline button style as a component */
+/* Red background, white text, hover: fade to white border + red text */
+.btn-cta {
+    @apply bg-red-600 text-white px-6 py-3 rounded-lg font-semibold border-2 border-red-600;
+    @apply transition-all duration-300 ease-in-out;
+}
+
+.btn-cta:hover {
+    @apply bg-white text-red-600 border-red-600;
+}
+
+.btn-cta-outline {
+    @apply bg-transparent text-red-600 px-6 py-3 rounded-lg font-semibold border-2 border-red-600;
+    @apply transition-all duration-300 ease-in-out;
+}
+.btn-cta-outline:hover {
+     @apply bg-red-600 text-white border-red-600;
+}
+
+/* Helper for active nav link, if needed beyond simple conditional classes in Blade */
+.nav-link-active {
+    @apply text-red-600 font-semibold;
+}
+.nav-link {
+    @apply text-gray-700 hover:text-red-600 transition-colors duration-150;
+}

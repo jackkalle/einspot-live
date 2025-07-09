@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Disallow admin areas and auth pages from general crawling
+Disallow: /admin/
+Disallow: /admin$
+Disallow: /login$
+Disallow: /register$
+Disallow: /password/reset$
+
+# Add paths to specific files or directories you want to disallow
+# Disallow: /temp_files/
+# Disallow: /confidential_document.pdf
+
+Sitemap: /sitemap.xml
+# If APP_URL is, for example, https://www.einspot.com, then it would be:
+# Sitemap: https://www.einspot.com/sitemap.xml
+# For now, using a relative path which is generally acceptable.
